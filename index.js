@@ -233,6 +233,8 @@ function cheetahDownloader (FILEURL, TARGETFOLDER, OPTS = {}) {
     })
   }
 
+  const handleError = () => {}
+
   const sendHeadRequest = (url, cb, errCB) => {
     const reqOpts = {
       url: url,
@@ -247,6 +249,7 @@ function cheetahDownloader (FILEURL, TARGETFOLDER, OPTS = {}) {
     request.head(reqOpts)
     .on('response', cb)
     .on('error', function (err, res) {
+      handleError(err) // eslint fix
       if (res.code === 405) { // Method not allowed = HEAD
         const getReq = request.get(reqOpts) // Try GETting it
         .on('response', res => {

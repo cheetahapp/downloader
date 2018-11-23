@@ -21,11 +21,11 @@ const targetFolder = '~/Downloads'
 const newDownload = downloader(url, targetFolder)
 
 newDownload.on('meta', meta => {
-    console.log('meta:', meta)
+  console.log('meta:', meta)
 }).on('progress', progress => {
-    console.log(progress)
+  console.log(progress)
 }).on('complete', info => {
-    console.log(info)
+  console.log(info)
 })
 .start()
 ```
