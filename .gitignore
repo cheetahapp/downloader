@@ -1,0 +1,4 @@
+temp
+local/*.mp4
+node_modules
+.DS_Store
