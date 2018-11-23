@@ -12,7 +12,7 @@
   "scripts": {
     "test": "standard index.js && mocha test/index.js"
   },
-  "author": "Moin Uddin <me@moin.im> (https://moin.im/)",
+  "author": "Moin Uddin <me@moin.im> (https://moin.im)",
   "license": "MIT",
   "devDependencies": {
     "mocha": "^5.0.0",
