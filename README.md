@@ -30,7 +30,7 @@ newDownload.on('meta', meta => {
 .start()
 ```
 
-#### Contructor
+#### Constructor
 
 ```js
 const newDownload = downloader(url, targetFolder [, opts])
