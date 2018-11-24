@@ -19,7 +19,7 @@ function cheetahDownloader (FILEURL, TARGETFOLDER, OPTS = {}) {
   fs.accessSync(TARGETFOLDER, fs.W_OK)  // Node will throw an exception if path does not exists
 
   const THREADS = OPTS.connections || 5
-  const DIR_TEMP = `${OPTS.tempDir || __dirname}/temp/`  // for all the downloads
+  const DIR_TEMP = OPTS.tempDir || `${__dirname}/temp/`  // for all the downloads
   const UID = Math.random().toString(36).substr(2, 4)   // 4 letter random aplha-numeric string
   const PATH_TEMP = `${DIR_TEMP}${UID}/`  // for current download
   const INTERVAL = OPTS.interval || 500
@@ -168,7 +168,7 @@ function cheetahDownloader (FILEURL, TARGETFOLDER, OPTS = {}) {
     trigger('chunkProgress', {
       index: index,
       speed: (progress.speed / 1024).toFixed(2), // kb/s
-      percent: progress.percent.toFixed(3),
+      percent: (progress.percent || 0).toFixed(3),
       timeRemaining: (progress.time.remaining || 0).toFixed(2) // sec
     })
   }

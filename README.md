@@ -43,7 +43,7 @@ const newDownload = downloader(url, targetFolder [, opts])
  - *opts*: (object, optional) -
     - *connections*: (int) - How many parallel connections should be made. `5` is default.
     - *interval*: (int) - interval of progress update in `ms`. Default is `500`
-    - *tmpDir*: (string) - Where to save the temporary files. Make sure you have write access to this folder.
+    - *tempDir*: (string) - Where to save the temporary files. Make sure you have write access to this folder. E.g: `__dirname + '/temp/'`. __Don't forget the trailing slash!__.
     - *saveAs*: (string) - The name you would like the file to be saved as. Helpful when you want to save the file with different name than the server provided. You can also use [file-saveable](https://github.com/cheetahapp/file-saveable) to determine a name for the file.
     - *UA*: (string) - The user agent string you'd like to use while downloading. Default is:
     `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36`
@@ -89,7 +89,12 @@ Following events are emitted through out the life-cycle of a download. The callb
  - `chunkProgress`: Emitted for every `opts.chunks`.
  E.g data:
  ```js
-
+{
+  index: 0, // index of chunk (0 - opts.chunks-1)
+  speed: '234.10', // KB/s
+  percent: '0.042',
+  timeRemaining: '51.69' // Sec
+}
  ```
 
  - `complete`: Emitted when the download is complete.
